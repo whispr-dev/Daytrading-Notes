@@ -1,4 +1,4 @@
-📖 Daytrading Reinvented: Python, AI, and the Future of Precision Trading
+Daytrading Reinvented: Python, AI, and the Future of Precision Trading
 Introduction
 The New Era of Daytrading
 
@@ -94,29 +94,7 @@ Responsible Usage of Algorithms
 
 Continuous Learning and Strategy Refinement
 
-✅ word target: around 5000
-✅ style: solid, serious but friendly, no "fluff"
-✅ full runnable code included where appropriate
-✅ heavily Python-powered
-✅ AI/ML leveraged where logical
-
-fren —
-i’m writing it all out for you now as a full continuous piece (not just an outline like above).
-
-give me a couple minutes to type it all up into full prose + code!
-
-do you want it:
-
-in a single giant markdown block here?
-
-OR broken up into chapters, one per message so it's easier to copy?
-
-which do you prefer, fren?
-
-
-Sources
-
-🧠 The Beginner's Blueprint to Day Trading with Python
+ The Beginner's Blueprint to Day Trading with Python
 
 Part 1: What Is Day Trading?
 - Definition, goals, and how it differs from investing
@@ -131,7 +109,7 @@ Part 2: Core Concepts You Gotta Know
 - What is a trading strategy?
 
 Part 3: Your Day Trading Toolbox
-- 📦 Libraries
+-  Libraries
 	yfinance: pulling free market data
 	pandas/numpy: for time series wrangling
 	matplotlib / plotly: visualizing signals
@@ -195,7 +173,7 @@ Appendix:
 - Notes on deploying to VPS or local Linux boxes
 
 
-🧠 The Beginner's Blueprint to Day Trading with Python
+The Beginner's Blueprint to Day Trading with Python
 Part 1: What Is Day Trading?
 ✦ Welcome to the World of Day Trading
 Imagine waking up, grabbing your coffee, and instead of heading to a 9-to-5, you’re watching the green and red candles of the stock market flicker like code from The Matrix. You're not investing for decades — you’re in and out of trades within a day, sometimes within minutes. That, fren, is day trading.
@@ -243,7 +221,7 @@ Backtest strategies
 
 Build bots that trade for you (yes, seriously)
 
-✦ But... Is Day Trading Right for Me?
+But... Is Day Trading Right for Me?
 Before we code, let's talk straight:
 
 Day trading is not for everyone.
@@ -254,7 +232,7 @@ BUT…
 
 If you're a thinker, a tinkerer, and not afraid of data, day trading with Python flips the game. You’re not just trading — you’re engineering a system to trade.
 
-✦ What You Really Need to Succeed
+What You Really Need to Succeed
 90% of traders lose money. Why?
 
 Because they:
@@ -304,32 +282,31 @@ Reflect and iterate like a pro quant
 Here are a few key ideas we’ll unpack:
 
 
-Term	What it means
+Term				What it means
 Candlestick	A chart that shows price movement (open, high, low, close)
-Indicator	A math-based signal, like RSI (momentum) or EMA (trend)
-Backtest	Running your strategy on past data to test it
-Strategy	A set of rules that says: "Buy when X, sell when Y"
-Risk:Reward	Ratio of profit you expect vs. loss you risk
-Volatility	How much a stock swings around in price
+Indicator		A math-based signal, like RSI (momentum) or EMA (trend)
+Backtest		Running your strategy on past data to test it
+Strategy		A set of rules that says: "Buy when X, sell when Y"
+Risk:Reward		Ratio of profit you expect vs. loss you risk
+Volatility		How much a stock swings around in price
 By the end, you’ll not only know these terms — you’ll be using them in your code.
 
-✦ Python Setup: The Basics
+Python Setup: The Basics
 Before we build, let’s prep your machine.
 
 Here’s what you’ll want to install (we’ll install them as needed):
 
-bash
-Copy
-Edit
+```bash
 pip install yfinance pandas numpy matplotlib scikit-learn streamlit plotly vaderSentiment zipline-reloaded pyfolio
+```
 Don’t worry — I’ll walk you through every import and usage when we get there.
 
-✦ A Note on Money
+A Note on Money
 This guide does not give you financial advice. It gives you educational tooling — the ability to understand, test, and iterate on strategies.
 
 What you do with your money after reading this... is your call.
 
-✦ Coming Up Next: Core Concepts
+Coming Up Next: Core Concepts
 In Part 2, we’ll deep-dive into the core ideas of day trading:
 
 How to read a candlestick chart
@@ -343,14 +320,14 @@ How to think in terms of probability, not prediction
 And yep — with visuals and Python plots to drive it all home.
 
 
-📊 The Beginner's Blueprint to Day Trading with Python
+The Beginner's Blueprint to Day Trading with Python
 Part 2: Core Concepts You Gotta Know
-✦ Understanding the Language of Price
+Understanding the Language of Price
 Before we look at code, you need to speak the language of the markets — and that language is price action.
 
 Let’s break it down:
 
-🕯️ Candlestick Charts
+Candlestick Charts
 A candlestick is a visual snapshot of price movement during a specific period (1 minute, 1 hour, 1 day…).
 
 Each candle shows:
@@ -373,13 +350,11 @@ A color (green if it closed higher than it opened, red otherwise)
 
 This is what a single candle tells you — and when stacked together, they tell stories of momentum, indecision, reversals.
 
-🧠 Let's Plot Some Candles in Python
+Let's Plot Some Candles in Python
 Save this as:
-📄 core_concepts/candlestick_plot.py
+core_concepts/candlestick_plot.py
 
-python
-Copy
-Edit
+```hon
 import yfinance as yf
 import plotly.graph_objects as go
 
@@ -400,7 +375,9 @@ fig = go.Figure(data=[go.Candlestick(
 
 fig.update_layout(title=f"{ticker} - Daily Candlestick Chart", xaxis_rangeslider_visible=False)
 fig.show()
-📐 Indicators That Every Trader Uses
+```
+
+Indicators That Every Trader Uses
 1. EMA (Exponential Moving Average)
 Smooths price by averaging over time. Great for trend-following.
 
@@ -432,13 +409,11 @@ A signal EMA (e.g. 9 of the MACD) plots the signal line
 
 Crossovers give buy/sell signals.
 
-🧪 Code: EMA, RSI, and MACD Overlay
+Code: EMA, RSI, and MACD Overlay
 Save this as:
-📄 core_concepts/indicator_overlay.py
+core_concepts/indicator_overlay.py
 
-python
-Copy
-Edit
+```python
 import yfinance as yf
 import pandas as pd
 import plotly.graph_objects as go
@@ -482,15 +457,17 @@ fig.add_trace(go.Scatter(x=data.index, y=data['EMA21'], mode='lines', name='EMA 
 
 fig.update_layout(title='AAPL with EMA Overlay', xaxis_rangeslider_visible=False)
 fig.show()
-📏 Other Critical Concepts
-✦ Support and Resistance
+```
+
+Other Critical Concepts
+Support and Resistance
 Support = price level where buying pressure outweighs selling (bounces up)
 
 Resistance = price level where selling pressure outweighs buying (bounces down)
 
 You don’t need to hardcode these — indicators like Bollinger Bands and pivot points help detect them.
 
-✦ Volume
+Volume
 Think of volume as how loud the market is:
 
 High volume = strong conviction
@@ -499,19 +476,19 @@ Low volume = indecision
 
 Volume confirms breakouts, trend strength, or lack of interest.
 
-✦ Volatility
+Volatility
 Measured by ATR (Average True Range) or simply by % range.
 
 More volatility = more opportunity… and more risk.
 
-✦ Risk:Reward Ratio
+ Risk:Reward Ratio
 You want setups where you risk 1 unit to potentially gain 2 or more.
 
 A common beginner mistake: “high win rate, low reward” → not sustainable
 
 A better approach: “medium win rate, high reward” → long-term edge
 
-📉 Signals vs. Noise
+Signals vs. Noise
 A trading signal should:
 
 Be backed by math or logic (not “gut”)
@@ -522,20 +499,19 @@ Have a clear entry/exit and risk
 
 We'll start crafting strategies using combinations of indicators in the next parts.
 
-🧠 Thought Experiment: Buy AAPL When RSI < 30
+Thought Experiment: Buy AAPL When RSI < 30
 Here’s a dead-simple strategy:
 
-text
-Copy
-Edit
+```text
 IF RSI < 30:
     BUY
 IF RSI > 70:
     SELL
+```
 It might work, it might not. You won’t know until you backtest it.
 That's the key difference between gambling and quantitative trading.
 
-✦ Coming Up Next: Tools and Libraries
+Coming Up Next: Tools and Libraries
 In Part 3, we’ll explore:
 
 The exact Python libraries to install
@@ -548,9 +524,9 @@ Your first data pull from Yahoo Finance
 
 And your first trading dashboard (Streamlit!)
 
-🧰 The Beginner's Blueprint to Day Trading with Python
+The Beginner's Blueprint to Day Trading with Python
 Part 3: Tools of the Trade — Python Libraries You’ll Actually Use
-✦ Why Python?
+Why Python?
 Python is beloved by traders for the same reason it’s loved by scientists, ML engineers, and data nerds:
 
 Simple syntax
@@ -563,31 +539,29 @@ It’s readable, fast to prototype, and powerful under the hood
 
 And we’re going to exploit every bit of that.
 
-🧱 Let’s Build Your Core Stack
+Let’s Build Your Core Stack
 Install this base toolkit from your terminal or WSL:
 
-bash
-Copy
-Edit
+```bash
 pip install yfinance pandas numpy matplotlib plotly streamlit scikit-learn vaderSentiment zipline-reloaded pyfolio
+```
+
 Here’s What Each One Does:
 
-Library	What it does
-yfinance	Pulls historical & live market data from Yahoo Finance
-pandas/numpy	The go-to tools for handling tabular data and calculations
-matplotlib	Basic plotting (we’ll mostly use plotly, but still useful)
-plotly	Fancy, interactive charts (candles, overlays, etc.)
-streamlit	Turns your scripts into slick, interactive trading dashboards
-sklearn	Machine learning and error metrics for evaluation
-vaderSentiment	Natural language processing to gauge news sentiment
+Library					What it does
+yfinance					Pulls historical & live market data from Yahoo Finance
+pandas/numpy			The go-to tools for handling tabular data and calculations
+matplotlib				Basic plotting (we’ll mostly use plotly, but still useful)
+plotly					Fancy, interactive charts (candles, overlays, etc.)
+streamlit				Turns your scripts into slick, interactive trading dashboards
+sklearn					Machine learning and error metrics for evaluation
+vaderSentiment		Natural language processing to gauge news sentiment
 zipline-reloaded	Backtesting engine to simulate strategies on historical data
-pyfolio	Portfolio performance/risk visualization from backtests
-🐍 Make Your Workspace Nice
+pyfolio					Portfolio performance/risk visualization from backtests
+Make Your Workspace Nice
 Project folder layout suggestion (optional but clean af):
 
-kotlin
-Copy
-Edit
+```text
 daytrader_tutorial/
 ├── core_concepts/
 │   ├── candlestick_plot.py
@@ -598,17 +572,16 @@ daytrader_tutorial/
 ├── backtests/
 ├── bots/
 └── README.md
+```
 Each part of this tutorial will give you fully self-contained .py files to drop into folders like core_concepts/, backtests/, or strategies/.
 
-🕸️ Fetching Data with yfinance
+Fetching Data with yfinance
 Let’s pull some real stock data and get familiar with the format.
 
 Save as:
-📄 core_concepts/fetch_data.py
+core_concepts/fetch_data.py
 
-python
-Copy
-Edit
+```python
 import yfinance as yf
 import pandas as pd
 
@@ -617,42 +590,41 @@ ticker = 'AAPL'
 data = yf.download(ticker, period='6mo', interval='1d')
 
 print(data.head())
+```
+
 This gives you a DataFrame with:
 
-mathematica
-Copy
-Edit
+```mathematica
                Open    High     Low   Close  Adj Close     Volume
 Date                                                            
 2023-10-19  173.30  175.27  172.99  174.91      174.91   50476600
 2023-10-20  174.98  175.75  171.96  172.88      172.88   53022000
-...
+…
+```
 Let’s now plot the closing price using plotly:
 
-📄 core_concepts/plot_closing.py
+core_concepts/plot_closing.py
 
-python
-Copy
-Edit
+```python
 import yfinance as yf
 import plotly.express as px
 
 data = yf.download("AAPL", period="6mo", interval="1d")
 fig = px.line(data, x=data.index, y='Close', title='AAPL Closing Price')
 fig.show()
-📊 Streamlit: Your First Trading Dashboard
+```
+
+Streamlit: Your First Trading Dashboard
 Create a fast dashboard you can run locally.
 
-📄 dashboards/aapl_dashboard.py
+dashboards/aapl_dashboard.py
 
-python
-Copy
-Edit
+```python
 import streamlit as st
 import yfinance as yf
 import plotly.graph_objects as go
 
-st.title("📈 AAPL Mini Dashboard")
+st.title("AAPL Mini Dashboard")
 
 # Get data
 data = yf.download("AAPL", period="3mo", interval="1d")
@@ -670,22 +642,21 @@ fig.add_trace(go.Candlestick(
 fig.update_layout(xaxis_rangeslider_visible=False)
 
 st.plotly_chart(fig, use_container_width=True)
+```
+
 Run with:
 
-bash
-Copy
-Edit
+```bash
 streamlit run dashboards/aapl_dashboard.py
-💡 You’ll get an interactive browser-based dashboard. Want to add an RSI/EMA selector or sentiment feed? We’ll wire those in soon.
+```
+You’ll get an interactive browser-based dashboard. Want to add an RSI/EMA selector or sentiment feed? We’ll wire those in soon.
 
-📰 Real-Time News + Sentiment
+Real-Time News + Sentiment
 Want to read the news and see if it’s bullish or bearish?
 
-📄 core_concepts/sentiment_news.py
+core_concepts/sentiment_news.py
 
-python
-Copy
-Edit
+```python
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 analyzer = SentimentIntensityAnalyzer()
@@ -704,10 +675,10 @@ compound > 0.05 → Positive
 compound < -0.05 → Negative
 
 Between → Neutral
-
+```
 Later we’ll grab live headlines from Yahoo Finance using scraping/APIs and visualize rolling sentiment over time.
 
-✦ Toolchain Recap
+Toolchain Recap
 By now, you should be able to:
 
 Pull stock data using yfinance
@@ -718,7 +689,7 @@ Create a basic dashboard with streamlit
 
 Measure sentiment from text using vaderSentiment
 
-✦ Coming Up Next: Naive Strategies and Forecasting
+Coming Up Next: Naive Strategies and Forecasting
 In Part 4, we’ll get analytical:
 
 Build a naive price prediction model (using yesterday’s close)
@@ -729,9 +700,9 @@ Plot predictions vs real prices
 
 Prove that “simple” can beat nothing — and benchmark future strategies against it
 
-🔮 The Beginner's Blueprint to Day Trading with Python
+The Beginner's Blueprint to Day Trading with Python
 Part 4: Naive Price Prediction — Forecasting with Your First Model
-✦ What’s a Naive Model?
+What’s a Naive Model?
 Before you build an AI trader or some brain-melting ensemble strategy... try this:
 
 “Tomorrow’s price will be the same as today’s.”
@@ -746,7 +717,7 @@ If you can't beat the naive model, your fancy model ain't worth deploying.
 
 You'd be surprised how close naive models come in short-term markets.
 
-🧠 The Plan
+The Plan
 We're going to:
 
 Pull data from Yahoo Finance (META)
@@ -757,12 +728,10 @@ Calculate error metrics (MAE, RMSE, MAPE, SMAPE, R²)
 
 Plot true vs predicted prices
 
-🧪 Full Python Script: Naive Prediction
-📄 strategies/naive_forecast.py
+Full Python Script: Naive Prediction
+strategies/naive_forecast.py
 
-python
-Copy
-Edit
+```python
 import numpy as np
 import pandas as pd
 import yfinance as yf
@@ -819,6 +788,8 @@ RMSE  : 5.1256
 MAPE  : 1.32%
 SMAPE : 1.30%
 R²    : 0.9987
+```
+
 What does this mean?
 
 MAE (Mean Absolute Error): On average, you’re off by $3.26 per prediction.
@@ -829,7 +800,7 @@ MAPE / SMAPE: Percentage-based — very useful when comparing across stocks with
 
 R² Score: Close to 1 = tight fit (which is expected when predicting tomorrow using today).
 
-💡 Why This Matters
+Why This Matters
 The naive forecast looks stupid — but it’s a shockingly strong baseline.
 
 In efficient markets, price tomorrow is often strongly correlated with today.
@@ -838,14 +809,12 @@ Any future model you write should try to beat this baseline in MAE, RMSE, and R�
 
 Don't underestimate stupidly simple models. They keep you honest.
 
-📘 Extra: Turn This Into a Mini Function
+ Extra: Turn This Into a Mini Function
 Want to forecast any stock? Wrap it into a function:
 
-📄 strategies/naive_forecast_function.py
+strategies/naive_forecast_function.py
 
-python
-Copy
-Edit
+```python
 def evaluate_naive(ticker, start='2020-01-01', end='2024-01-01'):
     import yfinance as yf
     import pandas as pd
@@ -865,15 +834,17 @@ def evaluate_naive(ticker, start='2020-01-01', end='2024-01-01'):
     r2 = r2_score(y_true, y_pred)
 
     print(f"{ticker} | MAE: {mae:.2f} | RMSE: {rmse:.2f} | R²: {r2:.4f}")
+```
+
 Then just call:
 
-python
-Copy
-Edit
+```python
 evaluate_naive("AAPL")
 evaluate_naive("TSLA")
 evaluate_naive("AMZN")
-📉 What's Next?
+```
+
+What's Next?
 We’ve built our first prediction model.
 
 In Part 5, we’ll:
@@ -890,9 +861,9 @@ This will be your first real strategy exploration — not just price mimicry.
 
 
 
-📈 The Beginner's Blueprint to Day Trading with Python
+The Beginner's Blueprint to Day Trading with Python
 Part 5: Visualizing the Market — Indicators That Guide Strategy
-✦ Why Visuals Matter in Trading
+Why Visuals Matter in Trading
 No matter how good your math is, your brain sees patterns faster than it calculates them.
 
 Overlaying price with indicators gives you an intuitive feel for:
@@ -907,7 +878,7 @@ Breakouts and traps
 
 We’ll use plotly for clean, interactive charting.
 
-✦ The Indicators We’ll Use
+The Indicators We’ll Use
 EMA (Exponential Moving Average)
 Smoothed average over time
 
@@ -933,12 +904,10 @@ Crossovers signal shifts
 Volume
 Validates moves: big price moves with low volume? Suspicious.
 
-🔧 Full Python Script: Price + EMA + RSI + MACD + Volume
-📄 core_concepts/full_indicator_overlay.py
+Full Python Script: Price + EMA + RSI + MACD + Volume
+core_concepts/full_indicator_overlay.py
 
-python
-Copy
-Edit
+```python
 import yfinance as yf
 import pandas as pd
 import plotly.graph_objects as go
@@ -985,12 +954,12 @@ fig.add_trace(go.Scatter(x=df.index, y=df['EMA21'], mode='lines', name='EMA 21')
 fig.update_layout(title=f"{ticker} Price + EMA", xaxis_rangeslider_visible=False)
 
 fig.show()
-📊 Add RSI and MACD Plots
-📄 core_concepts/rsi_macd_plot.py
+```
 
-python
-Copy
-Edit
+Add RSI and MACD Plots
+core_concepts/rsi_macd_plot.py
+
+```python
 import plotly.subplots as sp
 
 # Subplots: (Price + EMA), RSI, MACD
@@ -1021,7 +990,9 @@ fig.add_trace(go.Scatter(x=df.index, y=df['Signal'], name='Signal'), row=3, col=
 
 fig.update_layout(height=800, title_text=f"{ticker} Price + Indicators")
 fig.show()
-🔥 Example Insights You Can Now See
+```
+
+Example Insights You Can Now See
 When RSI crosses below 30 → potential bounce opportunity
 
 When MACD crosses signal line up → potential entry
@@ -1032,12 +1003,10 @@ If price breaks out with high volume → strength confirmed
 
 You’ve now built the foundation for indicator-based strategies.
 
-✨ Bonus: Add Volume Bars Below the Price
-📄 core_concepts/price_with_volume.py
+Bonus: Add Volume Bars Below the Price
+core_concepts/price_with_volume.py
 
-python
-Copy
-Edit
+```python
 fig = sp.make_subplots(rows=2, cols=1, shared_xaxes=True,
                        row_heights=[0.8, 0.2], vertical_spacing=0.05)
 
@@ -1055,7 +1024,9 @@ fig.add_trace(go.Bar(x=df.index, y=df['Volume'], name='Volume'), row=2, col=1)
 
 fig.update_layout(height=700, title_text="Price with Volume")
 fig.show()
-✦ Coming Up Next: Build a Custom Screener
+```
+
+Coming Up Next: Build a Custom Screener
 In Part 6, we’ll:
 
 Load a list of S&P500 stocks
@@ -1072,9 +1043,9 @@ You’ll basically have your own Finviz… for free.
 
 
 
-📊 The Beginner's Blueprint to Day Trading with Python
+The Beginner's Blueprint to Day Trading with Python
 Part 6: Build a Custom Stock Screener from Scratch (DIY Finviz Edition)
-✦ What’s a Stock Screener?
+What’s a Stock Screener?
 A stock screener helps you filter thousands of stocks down to the few that match your unique trading criteria.
 
 It answers questions like:
@@ -1089,14 +1060,14 @@ Which have unusual volume or clean trend structure?
 
 Most traders rely on screeners like Finviz, but here, you’ll build your own screener in Python — faster, tailored, and flexible enough to grow with your strategy logic.
 
-✦ Screener Features
+Screener Features
 We’ll build a script that:
 
-✅ Loads S&P 500 tickers from Wikipedia
+- Loads S&P 500 tickers from Wikipedia
 
-✅ Fetches 1 year of historical data via yfinance
+- Fetches 1 year of historical data via yfinance
 
-✅ Calculates:
+- Calculates:
 
 52-week high and low
 
@@ -1110,14 +1081,12 @@ Relative position in range
 
 Market cap class (Nano → Mega)
 
-✅ Filters by criteria (e.g., near highs, RSI under 70, market cap > $10B)
+- Filters by criteria (e.g., near highs, RSI under 70, market cap > $10B)
 
-✅ Saves both full and filtered results to .csv and .xlsx
+- Saves both full and filtered results to .csv and .xlsx
 
-🛠️ Full Python Script: strategies/stock_screener_v2.py
-python
-Copy
-Edit
+Full Python Script: strategies/stock_screener_v2.py
+```python
 import yfinance as yf
 import pandas as pd
 import numpy as np
@@ -1201,55 +1170,56 @@ timestamp = datetime.now().strftime('%Y%m%d_%H%M')
 df.to_excel(f"outputs/full_sp500_screen_{timestamp}.xlsx", index=False)
 filtered.to_excel(f"outputs/filtered_screen_{timestamp}.xlsx", index=False)
 
-print(f"✅ Done! Saved to: outputs/filtered_screen_{timestamp}.xlsx")
-🧠 Output Columns
+print(f"Done! Saved to: outputs/filtered_screen_{timestamp}.xlsx")
+```
 
-Ticker	Price	52W High	% From High	RSI	Market Cap	Cap Class
-AAPL	175.50	181.50	3.3%	56	2900	Mega
-NVDA	640.00	650.00	1.5%	69	1700	Mega
+Output Columns
+Ticker	Price		52W High	% From High	RSI	Market Cap	Cap Class
+AAPL		175.50	181.50	3.3%			56		2900			Mega
+NVDA		640.00	650.00	1.5%			69		1700			Mega
 Interpretation: AAPL is ~3.3% from its 52W high, RSI is neutral, and it's a mega-cap. Great breakout candidate on volume.
 
-🧪 Filter Variants to Try
-🔻 Oversold Dip Finder:
-python
-Copy
-Edit
+Filter Variants to Try
+Oversold Dip Finder:
+```python
 filtered = df[
     (df['% From High'] > 20) &
     (df['Market Cap ($B)'] < 5) &
     (df['RSI'] < 30)
 ]
-💸 Mega-Cap Consolidation:
-python
-Copy
-Edit
+```
+
+Mega-Cap Consolidation:
+```python
 filtered = df[
     (df['Market Cap ($B)'] > 100) &
     (df['% From High'] < 5)
 ]
-💡 What Else Can You Add?
-✴️ MACD histogram
+```
 
-📊 ATR-based volatility rank
+What Else Can You Add?
+- MACD histogram
 
-📈 Moving average crossovers
+- ATR-based volatility rank
 
-🧠 Sentiment model output
+- Moving average crossovers
 
-🕒 Earnings date proximity
+- Sentiment model output
 
-🔬 Sector filtering (via info['sector'])
+- Earnings date proximity
+
+- Sector filtering (via info['sector'])
 
 Your screener can evolve into a signal engine for your trading bot.
 
-📁 Output Structure
-bash
-Copy
-Edit
+Output Structure
+```bash
 outputs/
 ├── full_sp500_screen_<timestamp>.xlsx
 └── filtered_screen_<timestamp>.xlsx
-✨ Coming Up in Part 7
+```
+
+Coming Up in Part 7
 We shift gears into options with visual math models:
 
 Understand binary options
@@ -1262,9 +1232,9 @@ Use them for forecasting & strategy logic
 
 You’re about to unlock the math behind options — visually and interactively.
 
-🧠 The Beginner's Blueprint to Day Trading with Python
+The Beginner's Blueprint to Day Trading with Python
 Part 7: Understanding Options with Binary Payoffs and Visual Math
-✦ What is an Option, Really?
+What is an Option, Really?
 An option gives you the right, but not the obligation, to buy or sell something at a specific price (called the strike) before a specific date (expiration).
 
 Let’s focus on two basic types:
@@ -1277,7 +1247,7 @@ Imagine you have a CALL on AAPL at $150.
 If AAPL hits $170, you’re like: “Heh. I’ll buy at $150 and sell instantly for $170.”
 You just made $20 per share, minus the option cost (called the premium).
 
-✦ But What’s a Binary Option?
+But What’s a Binary Option?
 Binary = "Yes/No".
 
 You get a fixed payout if the condition is true, or nothing if it isn’t.
@@ -1288,14 +1258,12 @@ Example:
 
 They’re called digital options, binary calls/puts, or all-or-nothing bets.
 
-✦ Visualizing Option Payoffs
+Visualizing Option Payoffs
 Let’s plot it!
 
-📄 strategies/option_payoffs.py
+strategies/option_payoffs.py
 
-python
-Copy
-Edit
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -1321,6 +1289,8 @@ plt.legend()
 plt.grid()
 plt.tight_layout()
 plt.show()
+```
+
 You’ll see:
 
 A green step for binary call
@@ -1329,12 +1299,10 @@ A red step for binary put
 
 A clear vertical line at the strike price
 
-✦ Add the Heaviside Function
+Add the Heaviside Function
 Binary options = perfect match for the Heaviside step function, a common math tool.
 
-python
-Copy
-Edit
+```python
 def heaviside(x):
     return 0 if x < 0 else 1
 So:
@@ -1342,68 +1310,38 @@ So:
 payoff = 100 * heaviside(S - strike) → binary call
 
 payoff = 100 * heaviside(strike - S) → binary put
+```
 
 To make it vectorized (faster for arrays), use NumPy’s version:
 
-python
-Copy
-Edit
+```python
 binary_call = 100 * np.heaviside(S - strike, 1)
 binary_put  = 100 * np.heaviside(strike - S, 1)
+```
 The second argument in np.heaviside(x, h0) is the value returned when x == 0 (tie).
 
-✦ Black-Scholes for Binary Options (Intro)
+Black-Scholes for Binary Options (Intro)
 Binary options don’t use the regular Black-Scholes N(d1) formula — they use N(d2) directly.
 
 Here’s the formula for a binary call:
 
 Binary Call Price = 
-𝑒
-−
-𝑟
-𝑇
-⋅
-𝑁
-(
-𝑑
-2
-)
-⋅
-𝑄
-e 
-−rT
- ⋅N(d 
-2
-​
- )⋅Q
+𝑒−𝑟𝑇⋅𝑁(𝑑2)⋅𝑄e−rT ⋅N(d2 )⋅Q
 
 Where:
 
-𝑟
-r = risk-free interest rate
+𝑟 = risk-free interest rate
 
-𝑇
-T = time to expiration (in years)
+𝑇 = time to expiration (in years)
 
-𝑄
-Q = payout
+𝑄 = payout
 
-𝑁
-(
-𝑑
-2
-)
-N(d 
-2
-​
- ) = cumulative normal dist evaluated at d2
+𝑁(𝑑2) = cumulative normal dist evaluated at d2
 
-💡 Code: Black-Scholes Binary Option Formula
-📄 strategies/binary_option_pricing.py
+Code: Black-Scholes Binary Option Formula
+strategies/binary_option_pricing.py
 
-python
-Copy
-Edit
+```python
 from scipy.stats import norm
 import numpy as np
 
@@ -1421,11 +1359,13 @@ Q = 100      # payout
 
 price = binary_call_price(S, K, T, r, sigma, Q)
 print(f"Binary Call Option Price: ${price:.2f}")
+```
+
 This will give you a fair value for a binary call option under common market conditions.
 
 Want a binary put? Just change norm.cdf(d2) → norm.cdf(-d2)
 
-✦ Real World Uses of Binary Options
+Real World Uses of Binary Options
 Forex markets use binary calls all the time
 
 Used for predicting events (e.g. “Will TSLA close above $700?”)
@@ -1434,7 +1374,7 @@ Hedge funds use them for structured payouts
 
 Can be useful for modeling “on/off” signals in strategy logic too
 
-✦ Coming Up Next: Full Backtesting Framework
+Coming Up Next: Full Backtesting Framework
 In Part 8, you’ll:
 
 Build your first mean reversion strategy
@@ -1447,9 +1387,9 @@ Visualize real returns and see if your logic actually works
 
 You’ll be a proper quant in just one more step, fren.
 
-📈 The Beginner's Blueprint to Day Trading with Python
+The Beginner's Blueprint to Day Trading with Python
 **Part 8: Backtest a Mean Reversion Strategy with Zipline + Pyfolio
-✦ What Is Backtesting?
+What Is Backtesting?
 Backtesting is like running your strategy in a time machine:
 
 "What would have happened if I used this strategy in 2010?"
@@ -1464,7 +1404,7 @@ See how you'd actually perform
 
 Visualize returns, drawdown, Sharpe ratio, and more
 
-✦ What is Mean Reversion?
+What is Mean Reversion?
 Mean reversion assumes prices eventually return to their "average" (mean).
 
 Simple logic:
@@ -1473,7 +1413,7 @@ If a stock has dropped too far too fast, it's likely to bounce
 
 If it's soared, it's likely to cool off
 
-✦ Strategy Logic: Buy the Dips
+Strategy Logic: Buy the Dips
 We’ll:
 
 Measure how far a stock is from its mean using a custom factor
@@ -1484,27 +1424,23 @@ Rebalance weekly
 
 Use realistic commission/slippage
 
-💾 Install Required Tools
+Install Required Tools
 If you haven’t already:
 
-bash
-Copy
-Edit
+```bash
 pip install zipline-reloaded pyfolio
+```
 Then set up Zipline's bundle:
 
-bash
-Copy
-Edit
+```bash
 zipline ingest -b quantopian-quandl
+```
 (You only need to ingest once. If it fails, we can swap in a local CSV loader later.)
 
-📄 Full Python Script: Mean Reversion Backtest
-📄 backtests/mean_reversion_zipline.py
+Full Python Script: Mean Reversion Backtest
+backtests/mean_reversion_zipline.py
 
-python
-Copy
-Edit
+```python
 import pandas as pd
 import numpy as np
 from zipline.api import (
@@ -1559,27 +1495,29 @@ results = run_algorithm(start=start, end=end,
                         capital_base=100000,
                         data_frequency='daily',
                         bundle='quantopian-quandl')
-📊 What You Get
+```
+
+What You Get
 Weekly rebalance based on Z-score
 
 Realistic trading costs (commission + slippage)
 
 Plot of your portfolio over 10 years
 
-🔬 Analyze Risk + Return with Pyfolio
+Analyze Risk + Return with Pyfolio
 Let’s dig into how the strategy performed beyond just money.
 
-📄 backtests/analyze_pyfolio.py
+backtests/analyze_pyfolio.py
 
-python
-Copy
-Edit
+```python
 import pyfolio as pf
 
 # Make sure you ran: `run_algorithm()` and stored result as `results`
 returns = results.portfolio_value.pct_change().dropna()
 
 pf.create_full_tear_sheet(returns)
+```
+
 This generates a full HTML-style breakdown:
 
 Cumulative returns
@@ -1594,7 +1532,7 @@ Monthly returns heatmap
 
 Daily value-at-risk
 
-🧠 How to Improve This Strategy
+How to Improve This Strategy
 Use a universe of stocks, not just AAPL
 
 Add volume filters
@@ -1607,7 +1545,7 @@ Test with different rebalancing windows
 
 Want to build a multi-stock pipeline strategy next? Just say so!
 
-✦ Coming Up Next: Browser-Based Trade Automation
+Coming Up Next: Browser-Based Trade Automation
 In Part 9, we’ll:
 
 Automate Fidelity login with Python + Shortkeys
@@ -1620,9 +1558,9 @@ Handle dynamic stop losses and alerts
 
 This is the bridge to real execution.
 
-🤖 The Beginner's Blueprint to Day Trading with Python
+The Beginner's Blueprint to Day Trading with Python
 Part 9: Automate Trades with a Real Browser Bot (Fidelity + Python)
-✦ What Are We Doing?
+What Are We Doing?
 We’ll log in to Fidelity automatically using:
 
 pyautogui: simulates mouse + keyboard
@@ -1633,7 +1571,7 @@ Secure workflows: partial credentials only in browser memory
 
 No Selenium. Fidelity blocks Selenium. This is stealthy and robust.
 
-✦ Before You Start
+Before You Start
 Install the Shortkeys extension in Chrome:
 Shortkeys for Chrome
 
@@ -1647,9 +1585,7 @@ ctrl+b → clicks the login button
 
 Here’s the JavaScript you’ll paste into each Shortkey:
 
-js
-Copy
-Edit
+```js
 // Username shortcut (ctrl+l)
 document.getElementById('dom-username-input').value = 'f'
 
@@ -1658,14 +1594,14 @@ document.getElementById('dom-pswd-input').value = 'P'
 
 // Login button shortcut (ctrl+b)
 document.getElementById('dom-login-button').click();
+```
+
 You’ll finish the rest of the username and password via pyautogui so they’re not stored anywhere.
 
-💻 Full Python Login Automation Script
-📄 bots/fidelity_login_bot.py
+Full Python Login Automation Script
+bots/fidelity_login_bot.py
 
-python
-Copy
-Edit
+```python
 import pyautogui
 import pyperclip
 import subprocess
@@ -1706,6 +1642,8 @@ def login(username_rest, password_rest):
 
 if __name__ == "__main__":
     login("r0b0tW0lf", "H4cksMarkets!")
+```
+
 Important:
 
 Only the first character of each credential is in Shortkeys
@@ -1714,14 +1652,12 @@ The rest is pasted from secure Python memory
 
 pyperclip makes sure the paste action behaves like a real human
 
-🧪 Bonus: Page Text Scanner
+Bonus: Page Text Scanner
 Want to wait until the login finishes?
 
-📄 bots/page_text_watcher.py
+bots/page_text_watcher.py
 
-python
-Copy
-Edit
+```python
 def wait_for_text(target, timeout=10):
     start = datetime.now()
     while (datetime.now() - start).seconds < timeout:
@@ -1732,9 +1668,10 @@ def wait_for_text(target, timeout=10):
             return True
         time.sleep(0.25)
     return False
+```
 This lets your bot wait for a successful login message or error.
 
-🛡️ Security Tip
+Security Tip
 Don't hardcode your full password into scripts. Options:
 
 Use a prompt: getpass.getpass()
@@ -1743,7 +1680,7 @@ Store encrypted string in .env or GPG file
 
 Split credentials across tools like we just did
 
-🧠 What Can You Do Now?
+What Can You Do Now?
 Once logged in, you can:
 
 Scrape holdings, balances, watchlists
@@ -1756,7 +1693,7 @@ Place trades based on real-time strategy output
 
 You’ve now got a bridge from Python logic → browser execution.
 
-✦ Coming Up Next: Your Full Trading Bot Architecture
+Coming Up Next: Your Full Trading Bot Architecture
 In Part 10, we’ll:
 
 Build a proper bot using MACD + RSI + VWAP
@@ -1769,9 +1706,9 @@ Show how the Pollen bot works (from Stefan's doc)
 
 We’ll bring everything full circle — strategy → execution → feedback loop.
 
-🤖 The Beginner's Blueprint to Day Trading with Python
+The Beginner's Blueprint to Day Trading with Python
 Part 10: Build Your First Real Trading Bot (MACD + RSI + VWAP + Broker Integration)
-✦ What Are We Building?
+What Are We Building?
 We’re recreating the essence of the Pollen trading bot (from Stefan’s doc) using:
 
 MACD, RSI, and VWAP for strategy
@@ -1782,7 +1719,7 @@ Modular components (so you can swap strategies or data sources)
 
 A daily schedule to run the bot
 
-✦ Pollen Strategy: Gravity-Based Mean Reversion
+Pollen Strategy: Gravity-Based Mean Reversion
 "Everything returns to the mean."
 
 Core signals:
@@ -1798,7 +1735,7 @@ Buy: MACD cross up + RSI < 35 + Price < VWAP
 
 Sell: MACD cross down + RSI > 65 + Price > VWAP
 
-💾 Alpaca Setup (Free Broker API)
+Alpaca Setup (Free Broker API)
 Create an account: https://alpaca.markets
 
 Get API Key + Secret (paper trading)
@@ -1806,10 +1743,8 @@ Get API Key + Secret (paper trading)
 Install the SDK:
 
 bash
-Copy
-Edit
 pip install alpaca-trade-api
-🧠 Strategy Logic (in Plain English)
+Strategy Logic (in Plain English)
 Pull last 100 candles (5-minute intervals)
 
 Calculate RSI(14), MACD(12/26/9), VWAP
@@ -1820,12 +1755,10 @@ If sell conditions met → close position
 
 Log every action taken
 
-📄 Full Bot Code
-📄 bots/macd_rsi_vwap_bot.py
+Full Bot Code
+bots/macd_rsi_vwap_bot.py
 
-python
-Copy
-Edit
+```python
 import pandas as pd
 import numpy as np
 from alpaca_trade_api.rest import REST, TimeFrame
@@ -1898,7 +1831,9 @@ def run_bot(symbol='AAPL'):
 
 if __name__ == '__main__':
     run_bot("AAPL")
-🧠 How to Run It
+```
+
+How to Run It
 You can:
 
 Run it every 15 minutes with a cronjob / task scheduler
@@ -1907,34 +1842,34 @@ Expand it to check multiple stocks
 
 Store logs in a .csv or database
 
-✨ Bonus: Logging + Alerts
+Bonus: Logging + Alerts
 To log every action:
 
-python
-Copy
-Edit
+```python
 import logging
 
 logging.basicConfig(filename='trading_log.txt', level=logging.INFO)
 
 # Replace print() with:
 logging.info(f"{datetime.datetime.now()} - BUY {symbol}")
+```
+
 For alerts, add:
 
-python
-Copy
-Edit
+```python
 import os
 os.system('say "BUY SIGNAL"')  # macOS voice alert
-🧱 Modular Architecture You Can Build
-bash
-Copy
-Edit
+```
+
+Modular Architecture You Can Build
+```bash
 /bots/
 ├── indicators.py       # All your tech indicators
 ├── strategies.py       # Your signal logic
 ├── broker.py           # Alpaca functions (submit, check, get_data)
 ├── main.py             # Ties everything together
+```
+
 Keep it pluggable, so you can:
 
 Swap brokers
@@ -1943,7 +1878,7 @@ Test new strategies
 
 Run in paper mode before going live
 
-✦ Coming Up Next: Final Recap and Future Paths
+Coming Up Next: Final Recap and Future Paths
 In the final Part 11, I’ll:
 
 Recap what you’ve built
@@ -1952,9 +1887,9 @@ Suggest next-level paths (e.g. AI, live LSTM, HFT, portfolio rebalancers)
 
 Point you to tools to scale it to pro level
 
-🏁 The Beginner's Blueprint to Day Trading with Python
+The Beginner's Blueprint to Day Trading with Python
 Part 11: The Recap, the Roadmap, and the Next Level
-✦ What You've Built
+What You've Built
 Over the course of this tutorial, you’ve built:
 
 ✔ Price Analysis Tools
@@ -2034,9 +1969,9 @@ Random strategies
 If it can't beat random… don't trade it.
 
 3. Real Execution Tips
-🛡️ Always start in paper mode
-🔐 Never expose full keys
-💾 Log every trade with:
+Always start in paper mode
+Never expose full keys
+Log every trade with:
 
 Time
 
@@ -2045,7 +1980,7 @@ Signal type
 Price
 
 Position size
-📉 Visualize drawdowns — your emotions will betray you if you don’t prepare
+Visualize drawdowns — your emotions will betray you if you don’t prepare
 
 4. Optional: Add Machine Learning
 Yes, you can add:
@@ -2091,7 +2026,7 @@ Bonus:
 
 Use streamlit to build a web dashboard to view your bot in action
 
-✦ Final Thoughts
+Final Thoughts
 You’ve now:
 
 Written real trading strategies
@@ -2108,21 +2043,21 @@ Learned the real logic behind signals, risk, and execution
 
 And you did it with nothing but open tools and Python.
 
-✨ Suggested Next Projects (Pick Your Path)
-🛠️ Build a Live Strategy Switcher
-→ Automatically switch strategies based on volatility or VIX
+Suggested Next Projects (Pick Your Path)
+Build a Live Strategy Switcher
+Automatically switch strategies based on volatility or VIX
 
-📊 Make a Full Trading Journal App
-→ Track trades, annotate charts, log emotional decisions
+Make a Full Trading Journal App
+Track trades, annotate charts, log emotional decisions
 
-🧠 Train an AI to Predict Trend Strength
-→ Use MACD/RSI/VWAP as features — build an ensemble classifier
+Train an AI to Predict Trend Strength
+Use MACD/RSI/VWAP as features — build an ensemble classifier
 
-🌐 Deploy a Streamlit Trading Dashboard
-→ Show positions, stats, live news sentiment, chart overlays
+Deploy a Streamlit Trading Dashboard
+Show positions, stats, live news sentiment, chart overlays
 
-⚖️ Create a Multi-Asset Portfolio Manager
-→ Auto-hedge, rebalance, simulate future paths with Monte Carlo
+Create a Multi-Asset Portfolio Manager
+Auto-hedge, rebalance, simulate future paths with Monte Carlo
 
 
 
